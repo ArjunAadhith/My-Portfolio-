@@ -1,0 +1,321 @@
+.contact-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: -75px;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 80px;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  z-index: 1;
+}
+
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.9s ease;
+}
+
+.scroll-animation.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.contact-title::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff00ea, #aa00ff);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: gradientShift 3s infinite alternate;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.bento-box {
+  background-color: #17171757;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bento-box:hover::before {
+  opacity: 1;
+}
+
+.bento-box h2 {
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: rgb(139, 139, 139);
+  text-transform: uppercase;
+}
+
+.bento-box p {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-icons button {
+  background: rgba(70, 69, 69, 0.2);
+  border: none;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-icons button:hover {
+  transform: scale(1.1);
+}
+
+.contact-icons button:nth-child(1):hover {
+  background: linear-gradient(135deg, #00ff87, #60efff);
+  box-shadow: 0 0 15px rgba(0, 255, 135, 0.5);
+}
+
+.contact-icons button:nth-child(2):hover {
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+  box-shadow: 0 0 15px rgba(220, 39, 67, 0.5);
+}
+
+.directors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.director {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .directors-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-container {
+    margin-top: 60px;
+  }
+}
+
+
+
+
+
+
+
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.bento-box {
+  background-color: #17171757;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.bento-box.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bento-box:nth-child(1).visible {
+  transition-delay: 0.2s;
+}
+
+.bento-box:nth-child(2).visible {
+  transition-delay: 0.4s;
+}
+
+.bento-box:nth-child(3).visible {
+  transition-delay: 0.6s;
+}
+
+.bento-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bento-box:hover::before {
+  opacity: 1;
+}
+
+.bento-box h2 {
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: rgb(139, 139, 139);
+  text-transform: uppercase;
+}
+
+.bento-box p {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-icons button {
+  background: rgba(70, 69, 69, 0.2);
+  border: none;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-icons button:hover {
+  transform: scale(1.1);
+}
+
+.contact-icons button:nth-child(1):hover {
+  background: linear-gradient(135deg, #00ff87, #60efff);
+  box-shadow: 0 0 15px rgba(0, 255, 135, 0.5);
+}
+
+.contact-icons button:nth-child(2):hover {
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+  box-shadow: 0 0 15px rgba(220, 39, 67, 0.5);
+}
+
+.directors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.director {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .directors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container {
+    margin-top: 60px;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}

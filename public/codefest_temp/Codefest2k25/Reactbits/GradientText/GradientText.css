@@ -1,0 +1,195 @@
+.animated-gradient-text {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  max-width: fit-content;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  font-weight: 900;
+  font-size: 140px;
+  transition: box-shadow 0.5s ease-out;
+  overflow: hidden;
+  cursor: pointer;
+  letter-spacing: 2px;
+  white-space: nowrap; /* Prevent text from breaking into multiple lines */
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 300% 100%;
+  animation: gradient linear infinite;
+  border-radius: inherit;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-overlay::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: inherit;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #060606;
+  z-index: -1;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-content {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient linear infinite;
+}
+
+@media (max-width: 1200px) {
+  .animated-gradient-text {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 992px) {
+  .animated-gradient-text {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .animated-gradient-text {
+    font-size: 60px; /* Increased font size for mobile */
+    padding: 10px 15px;
+    border-radius: 0.75rem;
+    margin-bottom: 10px; /* Reduced bottom space */
+    animation: mobileTextPulse 3s ease-in-out infinite alternate;
+  }
+
+  .text-content {
+    animation: mobileGradientShift 5s linear infinite;
+  }
+}
+
+@media (max-width: 576px) {
+  .animated-gradient-text {
+    font-size: 35px; /* Further increased for smaller mobile screens */
+    padding: 8px 12px;
+    border-radius: 0.5rem;
+    margin-bottom: 5px; /* Further reduced bottom space */
+  }
+}
+
+@media (max-width: 400px) {
+  .animated-gradient-text {
+    font-size: 25px; /* Slightly larger for very small screens */
+    padding: 6px 10px;
+    border-radius: 0.4rem;
+    margin-bottom: 0; /* Minimal bottom space */
+  }
+}
+
+@keyframes mobileTextPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes mobileGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+@media (max-width: 1200px) {
+  .animated-gradient-text {
+    font-size: 110px; /* Increased from 90px */
+  }
+}
+
+@media (max-width: 992px) {
+  .animated-gradient-text {
+    font-size: 90px; /* Increased from 70px */
+  }
+}
+
+@media (max-width: 768px) {
+  .animated-gradient-text {
+    font-size: 75px; /* Increased from 60px */
+    padding: 10px 15px;
+    border-radius: 0.75rem;
+    margin-bottom: 10px;
+    animation: mobileTextPulse 3s ease-in-out infinite alternate;
+  }
+
+  .text-content {
+    animation: mobileGradientShift 5s linear infinite;
+  }
+}
+
+@media (max-width: 576px) {
+  .animated-gradient-text {
+    font-size: 40px; /* Increased from 45px */
+    padding: 8px 12px;
+    border-radius: 0.5rem;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .animated-gradient-text {
+    font-size: 30px; /* Increased from 35px */
+    padding: 6px 10px;
+    border-radius: 0.4rem;
+    margin-bottom: 0;
+  }
+}
+
+
+
+
+
+
+

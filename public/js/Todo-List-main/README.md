@@ -1,0 +1,3 @@
+This is todo list webpage. This webpage serves as a basic todo list and note-taking application, similar to Notepad, allowing users to save various details.
+It is my inaugural project on GitHub. The todo list feature enables users to jot down notes, numbers, or any other necessary information, functioning essentially as a digital notepad.
+Users can both save and delete messages, adhering to the fundamental concept of a notepad. I plan to upload this project to my GitHub account............

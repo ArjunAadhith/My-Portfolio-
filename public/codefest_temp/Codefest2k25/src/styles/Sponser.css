@@ -1,0 +1,323 @@
+.sponsors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  overflow: hidden;
+  margin-top: -80px;
+  margin-bottom: 80px;
+  position: relative;
+  /* bottom: 50px; */
+  width: 100%;
+}
+
+.sponsors-Title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 80px;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  z-index: 1;
+}
+
+.sponsors-Title::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff00ea, #aa00ff);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: gradientShift 3s infinite alternate;
+}
+
+.sponsors-carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -149vw;
+  margin-right: -50vw;
+  background-color: transparent;
+
+  animation: pulse-border 2s infinite;
+  border: 2px solid rgb(125, 125, 125);
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    border-color: rgb(125, 125, 125);
+    box-shadow: 0 0 0 rgba(125, 125, 125, 0.4);
+  }
+  50% {
+    border-color: rgb(175, 175, 175);
+    box-shadow: 0 0 15px rgba(125, 125, 125, 0.6);
+  }
+}
+
+.sponsors-carousel-wrapper.flowing-border {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
+.sponsors-carousel-wrapper.flowing-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9d56e);
+  z-index: -1;
+  background-size: 400% 400%;
+  animation: gradient-border 15s ease infinite;
+  border-radius: 7px;
+}
+
+@keyframes gradient-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.sponsors-carousel-wrapper.neon-border {
+  border: 2px solid #4ecdc4;
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+  animation: neon-glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-glow {
+  from {
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.5),
+      0 0 20px rgba(78, 205, 196, 0.4), 0 0 30px rgba(78, 205, 196, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.7),
+      0 0 30px rgba(78, 205, 196, 0.5), 0 0 40px rgba(78, 205, 196, 0.4);
+  }
+}
+
+.sponsors-carousel-wrapper.scan-border {
+  position: relative;
+  border: 2px solid #333;
+  overflow: hidden;
+}
+
+.sponsors-carousel-wrapper.scan-border::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent, #4ecdc4, transparent);
+  transform-origin: bottom center;
+  animation: border-scan 3s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes border-scan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sponsors-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1900px;
+  padding: 60px 50px;
+  margin: 0 auto;
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sponsors-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.sponsor-logo {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.6;
+  transition: all 0.5s ease;
+  transform: scale(0.8);
+}
+
+.sponsor-logo .logo-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: all 0.5s ease;
+}
+
+.sponsor-logo.active-logo {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+@keyframes gradientShift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 576px) {
+  .sponsors-container {
+    padding: 1rem 0;
+    margin-top: 0;
+    /* margin-bottom: 30px; */
+  }
+
+  .sponsors-carousel-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-left: -50vw;
+  }
+
+  .sponsors-carousel {
+    padding: 30px 20px;
+    gap: 1rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    animation: autoScroll 20s linear infinite;
+  }
+
+  .sponsor-logo {
+    flex: 0 0 auto;
+    width: 120px;
+    height: 80px;
+    scroll-snap-align: center;
+    transition: all 0.5s ease;
+  }
+
+  /* Automatic Scrolling Animation for Mobile */
+  @keyframes autoScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - 2rem));
+    }
+  }
+
+  /* Dynamic Center Logo Expansion */
+  .sponsors-carousel .sponsor-logo {
+    opacity: 0.6;
+    transform: scale(0.7);
+    transition: all 0.5s ease;
+  }
+
+  .sponsors-carousel .sponsor-logo.center-logo {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 576px) {
+  .sponsors-container {
+    padding: 1rem 0;
+    margin-top: 50px;
+    /* margin-bottom: 30px; */
+    overflow: hidden;
+  }
+
+  .sponsors-Title {
+    position: relative;
+    z-index: 2;
+    font-size: 35px;
+    margin-bottom: 60px;
+  }
+
+  .sponsors-carousel-wrapper {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    margin-right: 100%;
+  }
+
+  .sponsors-carousel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 0;
+    gap: 1rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    animation: autoScroll 20s linear infinite;
+    width: max-content;
+  }
+
+  .sponsors-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sponsor-logo {
+    flex: 0 0 auto;
+    width: 120px;
+    height: 80px;
+    scroll-snap-align: center;
+    opacity: 0.6;
+    transform: scale(0.7);
+    transition: all 0.3s ease;
+    margin: 0 10px;
+  }
+
+  .sponsor-logo .logo-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Center Logo Expansion and Color */
+  .sponsors-carousel .sponsor-logo.center-logo {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  /* Automatic Scrolling Animation for Mobile */
+  @keyframes autoScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 1rem));
+    }
+  }
+}
+
+

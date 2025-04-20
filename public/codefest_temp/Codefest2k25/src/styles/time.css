@@ -1,0 +1,892 @@
+/* Main Timer */
+.time-container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: url('/images/circuit-bg.jpg') center/cover no-repeat fixed;
+    overflow: hidden;
+}
+
+/* Blur background effect */
+.blur-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.time {
+    min-height: 80vh;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Matrix digital rain effect */
+.matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    pointer-events: none;
+    animation: matrixRain 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes matrixRain {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 1000px;
+    }
+}
+
+/* Floating code particles */
+.floating-code-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.code-particle {
+    position: absolute;
+    color: #ff00ea; /* primary color */
+    font-family: 'Courier New', monospace;
+    pointer-events: none;
+    animation: floatUpDown linear infinite;
+    text-shadow: 0 0 5px #aa00ff; /* secondary color for glow */
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.countdown-container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 60px 40px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+/* Circuit line animations */
+.countdown-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 30px 30px;
+    animation: circuitMove 20s linear infinite;
+    z-index: 0;
+}
+
+.countdown-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 20px 20px;
+    animation: circuitMove 15s linear infinite reverse;
+    z-index: 0;
+}
+
+@keyframes circuitMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+/* Glitch effect for title */
+.glitch-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.countdown-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 55px;
+    color: #ffffff;
+    text-shadow: 0 0 8px #ff00ea; /* primary glow */
+    letter-spacing: 3px;
+    position: relative;
+}
+
+.countdown-title::before,
+.countdown-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.countdown-title::before {
+    color: #aa00ff; /* secondary color */
+    animation: glitch-effect 3s infinite;
+}
+
+.countdown-title::after {
+    color: #ff0073; /* accent color */
+    animation: glitch-effect 2s infinite reverse;
+}
+
+@keyframes glitch-effect {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(3px, 3px);
+    }
+    80% {
+        transform: translate(3px, -3px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.year-highlight {
+    color: #feb0f7;
+    text-shadow: 0 0 8px #aa00ff, 0 0 10px #ff0073;
+    animation: neonFlicker 5s infinite alternate;
+}
+
+@keyframes neonFlicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 20px #aa00ff, 0 0 30px #ff0073;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+/* Binary-styled subtitle */
+.binary-subtitle {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.countdown-subtitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    animation: binaryPulse 4s infinite;
+}
+
+.binary-bit {
+    color: #ff00ea;
+    animation: typingCursor 1s infinite;
+}
+
+@keyframes binaryPulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes typingCursor {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Enhanced countdown wrapper */
+.countdown-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Circuit decoration for countdown */
+.countdown-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    border: 2px dashed rgba(255, 0, 234, 0.2); /* using #ff00ea with opacity */
+    border-radius: 20px;
+    pointer-events: none;
+    animation: borderPulse 5s infinite alternate;
+}
+
+@keyframes borderPulse {
+    0% {
+        border-color: rgba(255, 0, 234, 0.1);
+    }
+    100% {
+        border-color: rgba(255, 0, 234, 0.3);
+    }
+}
+
+/* Enhanced countdown item */
+.countdown-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* Enhanced countdown value with circuit design */
+.countdown-value {
+    position: relative;
+    width: 110px;
+    height: 130px;
+    background: rgba(5, 20, 40, 0.7);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 20px #aa00ff;
+    border: 1px solid #ff00ea;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.countdown-value:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 30px #ff0073;
+}
+
+/* Circuit line decorations */
+.circuit-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(90deg, transparent 48%, rgba(255, 0, 234, 0.2) 48%, rgba(255, 0, 234, 0.2) 52%, transparent 52%),
+        linear-gradient(180deg, transparent 48%, rgba(255, 0, 234, 0.2) 48%, rgba(255, 0, 234, 0.2) 52%, transparent 52%);
+    background-size: 30px 30px;
+    background-position: center;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* 3D flip effect for digits */
+.digit-flip-card {
+    position: relative;
+    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown-digit {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 48px;
+    color: #ffbbf9;
+    text-shadow: 0 0 10px #aa00ff;
+    position: relative;
+    animation: digitPulse 1s infinite alternate;
+}
+
+@keyframes digitPulse {
+    0% {
+        text-shadow: 0 0 10px #aa00ff;
+    }
+    100% {
+        text-shadow: 0 0 20px #ff0073, 0 0 30px #aa00ff;
+    }
+}
+
+/* Digit reflection effect */
+.digit-reflection {
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 0, 234, 0.3), transparent);
+    transform: rotateX(180deg);
+    opacity: 0.3;
+    filter: blur(2px);
+}
+
+/* Enhanced time labels */
+.countdown-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    position: relative;
+    padding: 3px 10px;
+    background: rgba(255, 0, 234, 0.1);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 0, 234, 0.2);
+    box-shadow: 0 0 5px rgba(255, 0, 234, 0.3);
+}
+
+/* Enhanced separator */
+.countdown-separator {
+    font-family: 'Orbitron', monospace;
+    font-size: 30px;
+    color: rgba(255, 0, 234, 0.8);
+    margin-left: 10px;
+    margin-right: 10px;
+    animation: separatorPulse 1s infinite alternate;
+    position: absolute;
+    right: -15px;
+    top: 40px;
+}
+
+@keyframes separatorPulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* Enhanced Register Button */
+.register-button-container {
+    margin-top: 30px;
+    position: relative;
+}
+
+.register-button {
+    position: relative;
+    background: linear-gradient(90deg, #ff00ea, #aa00ff, #ff0073);
+    background-size: 200% auto;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    padding: 16px 55px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    color: white;
+    box-shadow: 0 7px 20px rgba(255, 0, 234, 0.4);
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 18px;
+    border: none;
+    letter-spacing: 2px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+}
+
+.button-flash {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    z-index: 1;
+    animation: buttonFlash 3s infinite;
+}
+
+@keyframes buttonFlash {
+    0% {
+        left: -100%;
+    }
+    20%, 100% {
+        left: 100%;
+    }
+}
+
+.register-button:hover {
+    background-position: right center;
+    color: #fff;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 0, 234, 0.6), 0 0 30px rgba(255, 0, 234, 0.4);
+}
+
+/* Button circuit lines */
+.button-circuit-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 30%, rgba(255, 0, 234, 0.1) 47%, rgba(255, 0, 234, 0.1) 53%, transparent 70%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.register-button:hover .button-circuit-lines {
+    opacity: 1;
+}
+
+/* CPU Decorations */
+.tech-decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.cpu-decoration {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('/images/cpu-circuit.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+}
+
+.cpu-decoration.left {
+    top: 30px;
+    left: 30px;
+    transform: rotate(-15deg);
+    animation: cpuPulse 4s infinite alternate;
+}
+
+.cpu-decoration.right {
+    bottom: 30px;
+    right: 30px;
+    transform: rotate(15deg);
+    animation: cpuPulse 4s 1s infinite alternate;
+}
+
+@keyframes cpuPulse {
+    0% {
+        opacity: 0.1;
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        opacity: 0.3;
+        filter: hue-rotate(90deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .countdown-wrapper {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .countdown-item {
+        padding: 0 15px;
+    }
+    
+    .countdown-separator {
+        display: none;
+    }
+    
+    .countdown-value {
+        width: 90px;
+        height: 110px;
+    }
+    
+    .countdown-digit {
+        font-size: 38px;
+    }
+    
+    .countdown-title {
+        font-size: 40px;
+    }
+    
+    .cpu-decoration {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .countdown-container {
+        padding: 40px 20px;
+    }
+    
+    .countdown-value {
+        width: 70px;
+        height: 90px;
+    }
+    
+    .countdown-digit {
+        font-size: 32px;
+    }
+    
+    .countdown-title {
+        font-size: 32px;
+    }
+    
+    .countdown-subtitle {
+        font-size: 18px;
+    }
+    
+    .code-particle {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .countdown-value {
+        width: 60px;
+        height: 70px;
+    }
+    
+    .countdown-digit {
+        font-size: 26px;
+    }
+    
+    .countdown-label {
+        font-size: 12px;
+    }
+    
+    .countdown-title {
+        font-size: 28px;
+    }
+    
+    .register-button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+    
+    .cpu-decoration {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 660px) {
+    .countdown-wrapper {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    /* Hide the seconds countdown item */
+    .countdown-wrapper .countdown-item:last-child {
+      display: none;
+    }
+  
+    /* Adjust spacing and sizing for remaining items */
+    .countdown-wrapper .countdown-item {
+      flex-grow: 1;
+    }
+  
+    .countdown-value {
+      width: 80px;
+      height: 100px;
+    }
+  
+    .countdown-digit {
+      font-size: 36px;
+    }
+  
+    .countdown-separator {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .time-container {
+        min-height: 80vh; /* Reduced from 100vh */
+    }
+
+    .time {
+        min-height: 70vh; /* Reduced from 80vh */
+    }
+}
+
+@media (max-width: 576px) {
+    .time-container {
+        min-height: 100vh; /* Further reduced for smaller screens */
+    }
+
+    .time {
+        min-height: 60vh; /* Further reduced for smaller screens */
+    }
+    .countdown-value {
+        width: 60px;
+        height: 80px;
+      }
+    
+      .countdown-digit {
+        font-size: 30px;
+      }
+    
+      .countdown-separator {
+        display: none;
+      }
+}
+
+
+
+
+/* Responsive Design for Countdown Timer */
+@media (max-width: 1200px) {
+    .countdown-wrapper {
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .countdown-item {
+        padding: 0 5px;
+    }
+
+    .countdown-value {
+        width: 100px;
+        height: 120px;
+    }
+
+    .countdown-digit {
+        font-size: 44px;
+    }
+
+    .countdown-separator {
+        font-size: 28px;
+        margin: 0 5px;
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .countdown-container {
+        width: 95%;
+        padding: 50px 30px;
+    }
+
+    .countdown-wrapper {
+        gap: 15px;
+    }
+
+    .countdown-value {
+        width: 90px;
+        height: 110px;
+    }
+
+    .countdown-digit {
+        font-size: 38px;
+    }
+
+    .countdown-separator {
+        font-size: 26px;
+    }
+
+    .countdown-title {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 768px) {
+    .time-container {
+        min-height: 90vh;
+    }
+
+    .time {
+        min-height: 80vh;
+    }
+
+    .countdown-container {
+        padding: 40px 20px;
+    }
+
+    .countdown-wrapper {
+        gap: 10px;
+    }
+
+    .countdown-value {
+        width: 80px;
+        height: 100px;
+    }
+
+    .countdown-digit {
+        font-size: 34px;
+    }
+
+    .countdown-separator {
+        font-size: 24px;
+        margin: 0 3px;
+    }
+
+    .countdown-title {
+        font-size: 36px;
+    }
+
+    .countdown-subtitle {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .time-container {
+        min-height: 100vh;
+    }
+
+    .time {
+        min-height: 70vh;
+    }
+
+    .countdown-container {
+        padding: 30px 15px;
+        width: 100%;
+    }
+
+    .countdown-wrapper {
+        gap: 8px;
+    }
+
+    .countdown-value {
+        width: 70px;
+        height: 90px;
+    }
+
+    .countdown-digit {
+        font-size: 30px;
+    }
+
+    .countdown-separator {
+        font-size: 22px;
+        margin: 0 2px;
+    }
+
+    .countdown-title {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+
+    .countdown-subtitle {
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-wrapper {
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        position: relative;
+        left: 15px;
+    }
+
+    .countdown-value {
+        width: 60px;
+        height: 80px;
+    }
+
+    .countdown-digit {
+        font-size: 26px;
+    }
+
+    .countdown-label {
+        font-size: 12px;
+    }
+
+    .countdown-title {
+        font-size: 28px;
+    }
+
+    .countdown-separator {
+        font-size: 20px;
+        margin: 0 2px;
+    }
+}
+
+@media (max-width: 375px) {
+    .countdown-value {
+        width: 55px;
+        height: 75px;
+    }
+
+    .countdown-digit {
+        font-size: 24px;
+    }
+
+    .countdown-separator {
+        font-size: 18px;
+    }
+
+    .countdown-title {
+        font-size: 26px;
+    }
+
+    .countdown-subtitle {
+        font-size: 16px;
+    }
+}
+
+

@@ -1,0 +1,39 @@
+.logo-ticker-container {
+  padding: 40px 0;
+  background-color: black;
+  background: linear-gradient(45deg, #1a1a1a, #000000);
+  overflow: hidden;
+}
+
+.logo-ticker-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(255, 255, 255),
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(255, 255, 255),
+    transparent
+  );
+}
+
+.logo-ticker-track {
+  display: flex;
+  gap: 80px;
+  white-space: nowrap;
+  padding-right: 40px;
+}
+
+.logo-ticker-icon {
+  font-size: 56px;
+  color: #ffff00;
+}

@@ -1,0 +1,26 @@
+/* InfiniteSlider.module.css */
+.sliderContainer {
+  overflow: hidden;
+  width: 100%;
+  padding: 40px 0;
+  /* background-color: #f3f4f6; -- removed */
+  display: flex;
+  justify-content: center;
+}
+
+.sliderWrapper {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.sliderContent {
+  display: flex;
+  gap: 32px;
+  font-size: 40px;
+  white-space: nowrap;
+}
+
+.icon {
+  color: #047857;
+}

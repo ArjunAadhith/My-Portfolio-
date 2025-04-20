@@ -1,0 +1,209 @@
+.header-container {
+  position: fixed; 
+  left: 13px; 
+  width: 98%;
+  z-index: 999;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e,0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease-in-out;
+  margin-top: 30px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Cyber Alert";
+  color: #ff007f;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  display: inline-block;
+}
+
+.logo:hover {
+  animation: glitch-x 0.9s infinite alternate, flicker 1.5s infinite alternate;
+  transform: scale(1.1);
+}
+
+/* Glitch Effect - Only X-Axis */
+@keyframes glitch-x {
+  0% {
+    text-shadow: 3px 0px 0px #ff007f, -3px 0px 0px #2a01f5;
+    transform: translateX(2px);
+  }
+  25% {
+    text-shadow: -3px 0px 0px #2a01f5, 3px 0px 0px #000000;
+    transform: translateX(-2px);
+  }
+  50% {
+    text-shadow: 4px 0px 0px #ff007f, -4px 0px 0px #2a01f5;
+    transform: translateX(3px);
+  }
+  75% {
+    text-shadow: -4px 0px 0px #000000, 4px 0px 0px #2a01f5;
+    transform: translateX(-3px);
+  }
+  100% {
+    text-shadow: 5px 0px 0px #ff007f, -5px 0px 0px #2a01f5;
+    transform: translateX(2px);
+  }
+}
+
+/* Flickering Effect */
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* RGB Split Effect */
+.logo::before,
+.logo::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.logo::before {
+  color: #016ff5;
+  transform: translateX(-2px);
+  z-index: -1;
+}
+
+.logo::after {
+  color: #d001ff;
+  transform: translateX(2px);
+  z-index: -1;
+}
+
+
+.nav-menu {
+  display: flex;
+  gap: 45px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.nav-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.nav-menu a:hover {
+  color: #ff007f;
+  transform: scale(1.1);
+}
+
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: #ff007f;
+  left: 50%;
+  bottom: -5px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.register-btn {
+  background: none;
+  border: 2px solid #ff007f;
+  padding: 12px 18px;
+  color: #ff007f;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #ff007f;
+  color: white;
+  transform: scale(1.1);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    transform: translateY(-200%);
+    transition: transform 0.4s ease;
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .header-container {
+      width: 94%;
+      margin-top: 35px;
+      border-radius: 30px;
+  }
+
+  .logo {
+    margin-top: 8px;
+      font-size: 14px;
+  }
+
+  .nav-menu a {
+      font-size: 20px;
+  }
+
+  .register-btn {
+      font-size: 8px;
+      padding: 10px 10px;
+  }
+}

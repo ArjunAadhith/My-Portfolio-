@@ -1,0 +1,1 @@
+A modern calculator application designed with a sleek neumorphic UI style, combining minimalism and usability. This project showcases both the design and development aspects, with a focus on user experience (UX) and aesthetic appeal.

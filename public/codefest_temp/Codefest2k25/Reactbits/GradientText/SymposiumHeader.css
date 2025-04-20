@@ -1,0 +1,146 @@
+.codefest-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: rgb(173, 173, 173);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 0 15px; /* Added padding for mobile */
+}
+
+.main-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    position: relative;
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.cursor {
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.sub-text {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.icon-animation {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Font variations */
+.font-serif { font-family: serif; }
+.font-sans { font-family: sans-serif; }
+.font-mono { font-family: monospace; }
+.font-cursive { font-family: cursive; }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .main-text {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .sub-text {
+        font-size: 1.2rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .icon-animation {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-text {
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    .sub-text {
+        font-size: 1rem;
+    }
+
+    .icon-animation {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Ensure text doesn't overflow */
+.main-text, .sub-text {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    word-break: break-word;
+}
+
+/* Mobile Responsiveness - Height Reduction */
+@media screen and (max-width: 768px) {
+    .codefest-container {
+        height: 90vh; /* Reduced from 100vh */
+        padding: 0 15px;
+    }
+
+    .main-text {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .sub-text {
+        font-size: 1.2rem;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .icon-animation {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .codefest-container {
+        height: 20vh; /* Further reduced for smaller screens */
+        padding: 0 10px;
+    }
+
+    .main-text {
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+
+    .sub-text {
+        font-size: 1rem;
+    }
+
+    .icon-animation {
+        width: 20px;
+        height: 20px;
+    }
+}

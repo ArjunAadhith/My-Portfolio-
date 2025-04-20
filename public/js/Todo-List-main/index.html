@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotePad</title>
+    <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/notepad-512.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="notepad">
+        <h1>✍🏻 Note <span>Pad</span></h1>
+    </div>
+
+    <div class="container">
+        <div class="book-container">
+            <h2>Welcome</h2>
+            <h5><em>Guys!</em></h5>
+            <p>Welcome aboard! Get ready to embark on an unforgettable journey with us.</p>
+            <button class="o" onclick="deletebook(event)">Delete</button>
+        </div>
+    </div>
+
+
+    <div class="popup-overlay"></div>
+    <div class="popup-box">
+        <form>
+            <input type="text" placeholder="T i t l e" id="book-title-input">
+            <input type="text"  placeholder="Note" id="book-author-input">
+            <button id="add-book">SAVE</button>
+            <button id="cancel-popup">CANCEL</button>
+        </form>
+    </div>
+
+
+    <button class="add-button" id="add-popup-button">+</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

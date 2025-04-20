@@ -1,0 +1,369 @@
+.event-toggle-container {
+  text-align: center;
+  margin: 30px 0;
+  padding: 0 15px;
+}
+
+.About-Title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 80px;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  z-index: 1;
+}
+
+.About-Title::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff00ea, #aa00ff);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: gradientShift 3s infinite alternate;
+}
+
+
+.toggle-switch {
+  display: inline-block;
+  width: 280px;
+  height: 60px;
+  background-color: #1e293b;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.toggle-slider {
+  display: inline-block;
+  height: 56px;
+  background-color: #C42ECC;
+  border-radius: 28px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease, background-color 0.3s ease, width 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider.technical {
+  width: 120px;
+  transform: translateX(0);
+}
+
+.toggle-slider.non-technical {
+  width: 157px;
+  transform: translateX(120px);
+  background-color: #ff1d9d;
+}
+
+.toggle-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: opacity 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.technical-text {
+  left: 25px;
+  opacity: 1;
+}
+
+.non-technical-text {
+  right: 25px;
+  opacity: 1;
+}
+
+.events-container {
+  margin-top: 25px;
+}
+
+.toggle-switch:hover {
+  background-color: #2c3748;
+}
+
+.toggle-slider:hover {
+  filter: brightness(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .toggle-switch {
+      width: 100%;
+      max-width: 280px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.event-toggle-container {
+  text-align: center;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+.About-Title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 80px;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  z-index: 1;
+}
+
+.About-Title::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff00ea, #aa00ff);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: gradientShift 3s infinite alternate;
+}
+
+.toggle-switch {
+  display: inline-flex;
+  width: 320px;
+  height: 70px;
+  background-color: #1e293b;
+  border-radius: 35px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 30px;
+  overflow: hidden;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.toggle-slider {
+  position: absolute;
+  height: 64px;
+  top: 3px;
+  left: 3px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #ff006f, #b01dff);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-slider.technical {
+  width: 128px;
+  transform: translateX(0);
+}
+
+.toggle-slider.non-technical {
+  width: 170px;
+  transform: translateX(144px);
+}
+
+.toggle-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.technical-text {
+  left: 25px;
+  opacity: 1;
+}
+
+.non-technical-text {
+  right: 25px;
+  opacity: 1;
+}
+
+.events-container {
+  margin-top: 30px;
+}
+
+.toggle-switch:hover {
+  background-color: #2c3748;
+  transform: scale(1.02);
+}
+
+.toggle-slider:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Subtle glow effect */
+@keyframes toggleGlow {
+  0% { box-shadow: 0 0 5px #C42ECC; }
+  50% { box-shadow: 0 0 15px #ff1d9d; }
+  100% { box-shadow: 0 0 5px #C42ECC; }
+}
+
+.toggle-switch:focus-within {
+  animation: toggleGlow 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .toggle-switch {
+    width: 100%;
+    max-width: 320px;
+    height: 60px;
+  }
+  
+  .toggle-slider {
+    height: 54px;
+  }
+  
+  .toggle-slider.technical {
+    width: 126px;
+  }
+  
+  .toggle-slider.non-technical {
+    width: 170px;
+    transform: translateX(138px);
+  }
+}
+
+
+
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+
+
+/* Scroll Reveal Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade in variations */
+.scroll-reveal.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.scroll-reveal.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.scroll-reveal.slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* Existing keyframe animations from the original CSS */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
