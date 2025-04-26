@@ -685,6 +685,7 @@ section{
   transition: 0.4s ease;
   animation: imgReveal 1.5s ease forwards;
   opacity: 0;
+  
 }
 
 @keyframes imgReveal {
@@ -696,6 +697,7 @@ section{
   transform: scale(1.05);
   border-color: yellow;
   box-shadow: 0 0 50px rgba(255, 255, 0, 0.722);
+  
 }
 
 
