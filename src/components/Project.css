@@ -1373,7 +1373,7 @@
   .line {
     width: 134px;
     height: 4px;
-    left: 32.5%;
+    left: 32%;
     top: calc(135% + 30px);
     transform: translateX(-50%);
     position: absolute;
