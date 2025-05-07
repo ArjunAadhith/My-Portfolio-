@@ -46,6 +46,8 @@ const Projects = () => {
   const [expandedImage, setExpandedImage] = useState(null);
   const [isCardExpanded, setIsCardExpanded] = useState(false);
 
+  
+
   // Refs for multiple image containers
   const blueContainerRef = useRef(null);
   const pinkContainerRef = useRef(null);

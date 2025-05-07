@@ -1645,9 +1645,8 @@ section{
 
 
 
-/* ───────────────────────────────────────────────────────────────────────── */
-/*                                EDUCATION                                 */
-/* ───────────────────────────────────────────────────────────────────────── */
+/*          EDUCATION             */
+
 
 .education-container {
   position: relative;
@@ -1734,6 +1733,7 @@ section{
 /* 5) DEGREE UNDERLINE EFFECT */
 .degree {
   position: relative;
+  top: -5px;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -1743,7 +1743,7 @@ section{
   bottom: -5px;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 5px;
   background: yellow;
   border-radius: 25px;
   transition: width 0.3s ease;
