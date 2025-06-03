@@ -80,7 +80,7 @@
   
   .line {
     height: 110px;
-    top: 181%;
+    top: 178%;
   }
 }
 
@@ -1409,6 +1409,16 @@
 @media (min-width: 375px) and (max-width: 480px) {
   .grid-container {
     padding: 20px 15px;
+  }
+
+  .sidebar h1 {
+    font-size: 1.3rem;
+    top: 125%;
+  }
+  
+  .line {
+    top: 129%;
+    left: 33%;
   }
   
   .image, .small-image, .medium-image, .large-image {

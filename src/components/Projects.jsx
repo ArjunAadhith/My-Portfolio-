@@ -9,6 +9,7 @@ const Projects = () => {
     pinkContainer: 0,
     largeContainer: 0,
     leftColumn: 0,
+    rightColumn: 0, // Added for right column
   });
 
   // State for tracking overlay texts based on active images
@@ -46,19 +47,19 @@ const Projects = () => {
   const [expandedImage, setExpandedImage] = useState(null);
   const [isCardExpanded, setIsCardExpanded] = useState(false);
 
-  
-
   // Refs for multiple image containers
   const blueContainerRef = useRef(null);
   const pinkContainerRef = useRef(null);
   const largeContainerRef = useRef(null);
   const leftColumnRef = useRef(null);
+  const rightColumnRef = useRef(null); // Added for right column
 
   // Refs for interval timers
   const blueContainerTimer = useRef(null);
   const pinkContainerTimer = useRef(null);
   const largeContainerTimer = useRef(null);
   const leftColumnTimer = useRef(null);
+  const rightColumnTimer = useRef(null); // Added for right column
 
   const projectDetails = {
     // Frontend projects
@@ -156,9 +157,9 @@ const Projects = () => {
 
     // UI/UX Design
     "Stucor for Desktop": {
-  description: "A redesigned desktop interface for Stucor educational platform with improved usability.",
-  exploreLink: "https://www.figma.com/proto/nIfAXuv4TethAKm2JepTGh/Stucor-Desktop-UI?page-id=0%3A1&node-id=12-84&viewport=143%2C191%2C0.05&t=Tg8Ge3zHR5MsyIu5-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=308%3A273",
-},
+      description: "A redesigned desktop interface for Stucor educational platform with improved usability.",
+      exploreLink: "https://www.figma.com/proto/nIfAXuv4TethAKm2JepTGh/Stucor-Desktop-UI?page-id=0%3A1&node-id=12-84&viewport=143%2C191%2C0.05&t=Tg8Ge3zHR5MsyIu5-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=308%3A273",
+    },
     "Pet Frnd": {
       description:
         "A pet adoption platform design focusing on user experience and emotional connection.",
@@ -257,27 +258,58 @@ const Projects = () => {
     { src: "codefest.png", alt: "Codefest 2K25", title: "Codefest 2K25" },
   ];
 
-// Replace this in your handleImageClick function (around line 343)
-const handleImageClick = (title, imageSrc) => {
-  // Get the project details including the exploreLink
-  const projectDetail = projectDetails[title] || {};
-  
-  // Update state with clicked image details
-  setExpandedImage({
-    title: title,
-    src: imageSrc,
-    description: projectDetail.description || "No description available.",
-    liveLink: projectDetail.liveLink || "#",
-    githubLink: projectDetail.githubLink || "#",
-    exploreLink: projectDetail.exploreLink || "#"  // Make sure exploreLink is included
-  });
+  // Right column images data (UI/UX Design)
+  const rightColumnImages = [
+    { src: "stucor for desktop.jpg", alt: "Stucor", title: "Stucor for Desktop" },
+    { src: "pet frnd.jpg", alt: "pet frnd", title: "Pet Frnd" },
+    { src: "TS MOTORS.jpg", alt: "TS Motors", title: "TS Motors" },
+    { 
+      src: "Google Sheet UI Design for Search icon.jpg", 
+      alt: "Google sheet UI design for search icon", 
+      title: "Google Sheet UI Design" 
+    },
+    { 
+      src: "Neumorphism control center.png", 
+      alt: "Neumorphism control center", 
+      title: "Neumorphism control center" 
+    },
+    { 
+      src: "one piece music ui.jpg", 
+      alt: "One Piece Music UI", 
+      title: "One Piece Music UI" 
+    },
+    { 
+      src: "yacht booking app.jpg", 
+      alt: "Yacht booking app", 
+      title: "yacht booking app" 
+    },
+    { 
+      src: "logging page design.jpg", 
+      alt: "Login Page UI", 
+      title: "Login Page UI" 
+    },
+  ];
 
-  // Show expanded card
-  setIsCardExpanded(true);
+  const handleImageClick = (title, imageSrc) => {
+    // Get the project details including the exploreLink
+    const projectDetail = projectDetails[title] || {};
+    
+    // Update state with clicked image details
+    setExpandedImage({
+      title: title,
+      src: imageSrc,
+      description: projectDetail.description || "No description available.",
+      liveLink: projectDetail.liveLink || "#",
+      githubLink: projectDetail.githubLink || "#",
+      exploreLink: projectDetail.exploreLink || "#"  // Make sure exploreLink is included
+    });
 
-  // Pause auto-scroll when viewing details
-  pauseAutoScroll();
-};
+    // Show expanded card
+    setIsCardExpanded(true);
+
+    // Pause auto-scroll when viewing details
+    pauseAutoScroll();
+  };
 
   // Function to close expanded card
   const closeExpandedCard = () => {
@@ -351,6 +383,11 @@ const handleImageClick = (title, imageSrc) => {
       leftColumnTimer.current = setInterval(() => {
         navigateImages("leftColumn", 1);
       }, 2500);
+
+      // Right column auto-scroll
+      rightColumnTimer.current = setInterval(() => {
+        navigateImages("rightColumn", 1);
+      }, 2500);
     }
 
     // Clean up intervals on unmount or when isAutoScrolling changes
@@ -359,6 +396,7 @@ const handleImageClick = (title, imageSrc) => {
       clearInterval(pinkContainerTimer.current);
       clearInterval(largeContainerTimer.current);
       clearInterval(leftColumnTimer.current);
+      clearInterval(rightColumnTimer.current);
     };
   }, [isAutoScrolling, activeImageIndexes]); // Re-create intervals when activeImageIndexes changes
 
@@ -383,6 +421,7 @@ const handleImageClick = (title, imageSrc) => {
       { ref: pinkContainerRef, name: "pinkContainer", type: "horizontal" },
       { ref: largeContainerRef, name: "largeContainer", type: "horizontal" },
       { ref: leftColumnRef, name: "leftColumn", type: "vertical" },
+      { ref: rightColumnRef, name: "rightColumn", type: "horizontal" }, // Added right column
     ];
 
     // Add swipe functionality to all containers
@@ -557,6 +596,8 @@ const handleImageClick = (title, imageSrc) => {
         ? pinkContainerRef
         : container === "leftColumn"
         ? leftColumnRef
+        : container === "rightColumn"
+        ? rightColumnRef
         : largeContainerRef;
 
     const imagesData =
@@ -566,6 +607,8 @@ const handleImageClick = (title, imageSrc) => {
         ? pinkContainerImages
         : container === "leftColumn"
         ? leftColumnImages
+        : container === "rightColumn"
+        ? rightColumnImages
         : largeContainerImages;
 
     let newIndex = activeImageIndexes[container] + direction;
@@ -581,7 +624,7 @@ const handleImageClick = (title, imageSrc) => {
     }));
 
     // Update overlay text based on the new active image for non-left column containers
-    if (container !== "leftColumn") {
+    if (container !== "leftColumn" && container !== "rightColumn") {
       setOverlayTexts((prev) => ({
         ...prev,
         [container]: imagesData[newIndex].title,
@@ -605,9 +648,6 @@ const handleImageClick = (title, imageSrc) => {
     }
   };
 
-
-  
-
   // Update overlay text when clicking pagination dots
   const handlePaginationClick = (container, index) => {
     // Pause auto-scroll when user interacts
@@ -620,11 +660,13 @@ const handleImageClick = (title, imageSrc) => {
         ? pinkContainerImages
         : container === "leftColumn"
         ? leftColumnImages
+        : container === "rightColumn"
+        ? rightColumnImages
         : largeContainerImages;
 
     setActiveImageIndexes((prev) => ({ ...prev, [container]: index }));
 
-    if (container !== "leftColumn") {
+    if (container !== "leftColumn" && container !== "rightColumn") {
       setOverlayTexts((prev) => ({
         ...prev,
         [container]: imagesData[index].title,
@@ -638,6 +680,8 @@ const handleImageClick = (title, imageSrc) => {
         ? pinkContainerRef
         : container === "leftColumn"
         ? leftColumnRef
+        : container === "rightColumn"
+        ? rightColumnRef
         : largeContainerRef;
 
     if (containerRef.current) {
@@ -771,213 +815,39 @@ const handleImageClick = (title, imageSrc) => {
             <div className="title">UI/UX Design</div>
 
             <div className="gallery-wrapper">
-              <div className="image-container" id="image-container">
+              <div className="image-container" id="image-container" ref={rightColumnRef}>
                 <div className="image-row">
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() =>
-                      handleImageClick(
-                        "Stucor for Desktop",
-                        "stucor for desktop.jpg"
-                      )
-                    }
-                  >
-                    <img
-                      src="stucor for desktop.jpg"
-                      alt="Stucor"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">Stucor for Desktop</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() => handleImageClick("Pet Frnd", "pet frnd.jpg")}
-                  >
-                    <img
-                      src="pet frnd.jpg"
-                      alt="pet frnd"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">Pet Frnd</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() =>
-                      handleImageClick("TS Motors", "TS MOTORS.jpg")
-                    }
-                  >
-                    <img
-                      src="TS MOTORS.jpg"
-                      alt="TS Motors"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">TS Motors</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() =>
-                      handleImageClick(
-                        "Google Sheet UI Design",
-                        "Google Sheet UI Design for Search icon.jpg"
-                      )
-                    }
-                  >
-                    <img
-                      src="Google Sheet UI Design for Search icon.jpg"
-                      alt="Google sheet UI design for search icon"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">Google Sheet UI Design</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() =>
-                      handleImageClick(
-                        "Neumorphism control center",
-                        "Neumorphism control center.png"
-                      )
-                    }
-                  >
-                    <img
-                      src="Neumorphism control center.png"
-                      alt="Neumorphism control center"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">
-                      Neumorphism control center
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() =>
-                      handleImageClick(
-                        "One Piece Music UI",
-                        "one piece music ui.jpg"
-                      )
-                    }
-                  >
-                    <img
-                      src="one piece music ui.jpg"
-                      alt="One Piece Music UI"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">One Piece Music UI</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() =>
-                      handleImageClick(
-                        "yacht booking app",
-                        "yacht booking app.jpg"
-                      )
-                    }
-                  >
-                    <img
-                      src="yacht booking app.jpg"
-                      alt="Yacht booking app"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">yacht booking app</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="small-image"
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-                    onClick={() =>
-                      handleImageClick(
-                        "Login Page UI",
-                        "logging page design.jpg"
-                      )
-                    }
-                  >
-                    <img
-                      src="logging page design.jpg"
-                      alt="Login Page UI"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                    />
-                    <div className="image-overlay">Login Page UI</div>
-                  </motion.div>
+                  {rightColumnImages.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      className="small-image"
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                      onClick={() => handleImageClick(image.title, image.src)}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                        }}
+                      />
+                      <div className="image-overlay">{image.title}</div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
 
-              {/* Navigation buttons (hidden by default, shown on hover) */}
+              {/* Navigation buttons */}
               <button
                 className="nav-button prev-button"
                 onClick={() => {
                   pauseAutoScroll();
-                  document.getElementById("image-container").scrollBy({
-                    left: -300,
-                    behavior: "smooth",
-                  });
+                  navigateImages("rightColumn", -1);
                 }}
                 aria-label="Previous"
               >
@@ -997,10 +867,7 @@ const handleImageClick = (title, imageSrc) => {
                 className="nav-button next-button"
                 onClick={() => {
                   pauseAutoScroll();
-                  document.getElementById("image-container").scrollBy({
-                    left: 300,
-                    behavior: "smooth",
-                  });
+                  navigateImages("rightColumn", 1);
                 }}
                 aria-label="Next"
               >
@@ -1015,6 +882,19 @@ const handleImageClick = (title, imageSrc) => {
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
               </button>
+
+              {/* Pagination indicators */}
+              <div className="image-pagination">
+                {rightColumnImages.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`pagination-dot ${
+                      activeImageIndexes.rightColumn === index ? "active" : ""
+                    }`}
+                    onClick={() => handlePaginationClick("rightColumn", index)}
+                  ></div>
+                ))}
+              </div>
             </div>
           </motion.div>
 

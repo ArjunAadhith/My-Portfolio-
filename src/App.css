@@ -1855,12 +1855,11 @@ section{
     writing-mode: horizontal-tb;
     font-size: 1rem;
     text-align: center;
-    margin-bottom: 0.5rem;
     position: static;
   }
   
   .education-line {
-    height: 3px;
+    height: 5px;
     width: 80%;
     max-width: 145px;
     margin: 0.5rem 0 1.5rem;
