@@ -1438,3 +1438,18 @@ const handleImageClick = (title, imageSrc) => {
 };
 
 export default Projects;
+
+
+
+
+
+
+
+
+
+.image-container,
+  .medium-image-container,
+  .large-image-container,
+  .vertical-image-container {
+    gap: 10px;
+  }
