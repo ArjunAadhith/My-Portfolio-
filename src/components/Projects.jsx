@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import LazyImage from "./LazyImage";
 import "../components/Project.css";
 
 const Projects = () => {
@@ -158,52 +157,43 @@ const Projects = () => {
 
     // UI/UX Design
     "Stucor for Desktop": {
-      description:
-        "A redesigned desktop interface for Stucor educational platform with improved usability.",
-      exploreLink:
-        "https://www.figma.com/proto/nIfAXuv4TethAKm2JepTGh/Stucor-Desktop-UI?page-id=0%3A1&node-id=12-84&viewport=143%2C191%2C0.05&t=Tg8Ge3zHR5MsyIu5-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=308%3A273",
+      description: "A redesigned desktop interface for Stucor educational platform with improved usability.",
+      exploreLink: "https://www.figma.com/proto/nIfAXuv4TethAKm2JepTGh/Stucor-Desktop-UI?page-id=0%3A1&node-id=12-84&viewport=143%2C191%2C0.05&t=Tg8Ge3zHR5MsyIu5-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=308%3A273",
     },
     "Pet Frnd": {
       description:
         "A pet adoption platform design focusing on user experience and emotional connection.",
-      exploreLink:
-        "https://www.figma.com/proto/b0oJ5zPBtnU1Nb2v998pyl/Pet-Frnd?page-id=0%3A1&node-id=8-2&p=f&viewport=124%2C610%2C0.36&t=3l9jE8RIDk5x3itd-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=8%3A2",
+      exploreLink: "https://www.figma.com/proto/b0oJ5zPBtnU1Nb2v998pyl/Pet-Frnd?page-id=0%3A1&node-id=8-2&p=f&viewport=124%2C610%2C0.36&t=3l9jE8RIDk5x3itd-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=8%3A2",
     },
     "TS Motors": {
       description:
         "A modern website design for TS Motors showcasing vehicles and services.",
-      exploreLink:
-        "https://www.figma.com/proto/sMiKy8vqCBgqGw2QYWXKp5/TS-MOTORS?page-id=0%3A1&node-id=4-3&p=f&viewport=62%2C418%2C0.22&t=tPUShUGbfKycNK7D-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4%3A3&show-proto-sidebar=1",
+      exploreLink: "https://www.figma.com/proto/sMiKy8vqCBgqGw2QYWXKp5/TS-MOTORS?page-id=0%3A1&node-id=4-3&p=f&viewport=62%2C418%2C0.22&t=tPUShUGbfKycNK7D-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4%3A3&show-proto-sidebar=1",
     },
     "Google Sheet UI Design": {
       description:
         "A redesigned search functionality for Google Sheets with improved usability.",
-      exploreLink:
-        "https://www.figma.com/proto/1EXdPGE9ee6CT9m7TOaT3G/Google-Sheet-UI?page-id=0%3A1&node-id=1-8&viewport=161%2C430%2C0.79&t=WMM4bVIK5p1TsLpP-1&scaling=scale-down&content-scaling=fixed",
+      exploreLink: "https://www.figma.com/proto/1EXdPGE9ee6CT9m7TOaT3G/Google-Sheet-UI?page-id=0%3A1&node-id=1-8&viewport=161%2C430%2C0.79&t=WMM4bVIK5p1TsLpP-1&scaling=scale-down&content-scaling=fixed",
     },
     "Neumorphism control center": {
       description:
         "A control center interface with neumorphic design principles for a tactile feel.",
-      exploreLink:
-        "https://www.figma.com/proto/DRSTFzuFqxQzIQJgyAeErs/Untitled?page-id=1%3A2&node-id=3-3&viewport=627%2C931%2C0.19&t=3CsU2hGKvDd8IWju-1&scaling=scale-down&content-scaling=fixed",
+      exploreLink: "https://www.figma.com/proto/DRSTFzuFqxQzIQJgyAeErs/Untitled?page-id=1%3A2&node-id=3-3&viewport=627%2C931%2C0.19&t=3CsU2hGKvDd8IWju-1&scaling=scale-down&content-scaling=fixed",
     },
     "One Piece Music UI": {
       description:
         "A music player UI inspired by One Piece anime with themed visual elements.",
-      exploreLink:
-        "https://www.figma.com/proto/929gYewDfQUwWcfhbgq5A3/Music-UI-Vision?page-id=0%3A1&node-id=1-2&viewport=346%2C382%2C0.77&t=2HpKgEDGGyCxceIY-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2",
+      exploreLink: "https://www.figma.com/proto/929gYewDfQUwWcfhbgq5A3/Music-UI-Vision?page-id=0%3A1&node-id=1-2&viewport=346%2C382%2C0.77&t=2HpKgEDGGyCxceIY-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2",
     },
     "yacht booking app": {
       description:
         "A luxury yacht booking app interface with elegant design and seamless booking flow.",
-      exploreLink:
-        "https://www.figma.com/proto/3rnSAp7DD9GnHI7vl5Yeco/Yacht-Booking?page-id=0%3A1&node-id=1-2&viewport=240%2C457%2C0.54&t=xpDAYoVJG4CJPOLB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2",
+      exploreLink: "https://www.figma.com/proto/3rnSAp7DD9GnHI7vl5Yeco/Yacht-Booking?page-id=0%3A1&node-id=1-2&viewport=240%2C457%2C0.54&t=xpDAYoVJG4CJPOLB-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2",
     },
     "Login Page UI": {
       description:
         "A modern and secure login page design with clean aesthetics and good UX practices.",
-      exploreLink:
-        "https://www.figma.com/proto/FXAYL15VONilLo2ApgF0ag/Untitled?page-id=0%3A1&node-id=118-4&viewport=-1127%2C151%2C0.15&t=40pru97sFl0w3Kx9-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=102%3A2",
+      exploreLink: "https://www.figma.com/proto/FXAYL15VONilLo2ApgF0ag/Untitled?page-id=0%3A1&node-id=118-4&viewport=-1127%2C151%2C0.15&t=40pru97sFl0w3Kx9-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=102%3A2",
     },
   };
 
@@ -270,44 +260,40 @@ const Projects = () => {
 
   // Right column images data (UI/UX Design)
   const rightColumnImages = [
-    {
-      src: "stucor for desktop.jpg",
-      alt: "Stucor",
-      title: "Stucor for Desktop",
-    },
+    { src: "stucor for desktop.jpg", alt: "Stucor", title: "Stucor for Desktop" },
     { src: "pet frnd.jpg", alt: "pet frnd", title: "Pet Frnd" },
     { src: "TS MOTORS.jpg", alt: "TS Motors", title: "TS Motors" },
-    {
-      src: "Google Sheet UI Design for Search icon.jpg",
-      alt: "Google sheet UI design for search icon",
-      title: "Google Sheet UI Design",
+    { 
+      src: "Google Sheet UI Design for Search icon.jpg", 
+      alt: "Google sheet UI design for search icon", 
+      title: "Google Sheet UI Design" 
     },
-    {
-      src: "Neumorphism control center.png",
-      alt: "Neumorphism control center",
-      title: "Neumorphism control center",
+    { 
+      src: "Neumorphism control center.png", 
+      alt: "Neumorphism control center", 
+      title: "Neumorphism control center" 
     },
-    {
-      src: "one piece music ui.jpg",
-      alt: "One Piece Music UI",
-      title: "One Piece Music UI",
+    { 
+      src: "one piece music ui.jpg", 
+      alt: "One Piece Music UI", 
+      title: "One Piece Music UI" 
     },
-    {
-      src: "yacht booking app.jpg",
-      alt: "Yacht booking app",
-      title: "yacht booking app",
+    { 
+      src: "yacht booking app.jpg", 
+      alt: "Yacht booking app", 
+      title: "yacht booking app" 
     },
-    {
-      src: "logging page design.jpg",
-      alt: "Login Page UI",
-      title: "Login Page UI",
+    { 
+      src: "logging page design.jpg", 
+      alt: "Login Page UI", 
+      title: "Login Page UI" 
     },
   ];
 
   const handleImageClick = (title, imageSrc) => {
     // Get the project details including the exploreLink
     const projectDetail = projectDetails[title] || {};
-
+    
     // Update state with clicked image details
     setExpandedImage({
       title: title,
@@ -315,7 +301,7 @@ const Projects = () => {
       description: projectDetail.description || "No description available.",
       liveLink: projectDetail.liveLink || "#",
       githubLink: projectDetail.githubLink || "#",
-      exploreLink: projectDetail.exploreLink || "#", // Make sure exploreLink is included
+      exploreLink: projectDetail.exploreLink || "#"  // Make sure exploreLink is included
     });
 
     // Show expanded card
@@ -750,7 +736,7 @@ const Projects = () => {
                   whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                   onClick={() => handleImageClick(image.title, image.src)}
                 >
-                  <LazyImage
+                  <img
                     src={image.src}
                     alt={image.alt}
                     style={{
@@ -829,34 +815,27 @@ const Projects = () => {
             <div className="title">UI/UX Design</div>
 
             <div className="gallery-wrapper">
-              <div
-                className="image-container"
-                id="image-container"
-                ref={rightColumnRef}
-              >
+              <div className="image-container" id="image-container" ref={rightColumnRef}>
                 <div className="image-row">
                   {rightColumnImages.map((image, index) => (
                     <motion.div
                       key={index}
                       className="small-image"
                       variants={itemVariants}
-                      whileHover={{
-                        scale: 1.05,
-                        transition: { duration: 0.3 },
-                      }}
+                      whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                       onClick={() => handleImageClick(image.title, image.src)}
                     >
-                      <LazyImage
-  src={image.src}
-  alt={image.alt}
-  style={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: "8px",
-    cursor: "pointer",
-  }}
-/>
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                        }}
+                      />
                       <div className="image-overlay">{image.title}</div>
                     </motion.div>
                   ))}
@@ -935,17 +914,17 @@ const Projects = () => {
                       className="medium-image-item"
                       onClick={() => handleImageClick(image.title, image.src)}
                     >
-                      <LazyImage
-  src={image.src}
-  alt={image.alt}
-  style={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: "8px",
-    cursor: "pointer",
-  }}
-/>
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
@@ -1026,17 +1005,17 @@ const Projects = () => {
                       className="medium-image-item"
                       onClick={() => handleImageClick(image.title, image.src)}
                     >
-                      <LazyImage
-  src={image.src}
-  alt={image.alt}
-  style={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: "8px",
-    cursor: "pointer",
-  }}
-/>
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                        }}
+                      />
                     </div>
                   ))}
                 </div>
@@ -1118,17 +1097,17 @@ const Projects = () => {
                     className="large-image-item"
                     onClick={() => handleImageClick(image.title, image.src)}
                   >
-                    <LazyImage
-  src={image.src}
-  alt={image.alt}
-  style={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: "8px",
-    cursor: "pointer",
-  }}
-/>
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                        cursor: "pointer",
+                      }}
+                    />
                   </div>
                 ))}
               </div>
@@ -1232,11 +1211,11 @@ const Projects = () => {
 
               <div className="expanded-card-content">
                 <div className="expanded-image-container">
-                  <LazyImage
-  src={expandedImage.src}
-  alt={expandedImage.title}
-  className="expanded-image"
-/>
+                  <img
+                    src={expandedImage.src}
+                    alt={expandedImage.title}
+                    className="expanded-image"
+                  />
                 </div>
 
                 <div className="expanded-details">
