@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import "../components/Project.css";
 
 const Projects = () => {
@@ -737,7 +736,7 @@ const Projects = () => {
                   whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                   onClick={() => handleImageClick(image.title, image.src)}
                 >
-                  <LazyLoadImage
+                  <img
                     src={image.src}
                     alt={image.alt}
                     style={{
@@ -826,7 +825,7 @@ const Projects = () => {
                       whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                       onClick={() => handleImageClick(image.title, image.src)}
                     >
-                      <LazyLoadImage
+                      <img
                         src={image.src}
                         alt={image.alt}
                         style={{
@@ -915,7 +914,7 @@ const Projects = () => {
                       className="medium-image-item"
                       onClick={() => handleImageClick(image.title, image.src)}
                     >
-                      <LazyLoadImage
+                      <img
                         src={image.src}
                         alt={image.alt}
                         style={{
@@ -1006,7 +1005,7 @@ const Projects = () => {
                       className="medium-image-item"
                       onClick={() => handleImageClick(image.title, image.src)}
                     >
-                      <LazyLoadImage
+                      <img
                         src={image.src}
                         alt={image.alt}
                         style={{
@@ -1098,7 +1097,7 @@ const Projects = () => {
                     className="large-image-item"
                     onClick={() => handleImageClick(image.title, image.src)}
                   >
-                    <LazyLoadImage
+                    <img
                       src={image.src}
                       alt={image.alt}
                       style={{
@@ -1212,7 +1211,7 @@ const Projects = () => {
 
               <div className="expanded-card-content">
                 <div className="expanded-image-container">
-                  <LazyLoadImage
+                  <img
                     src={expandedImage.src}
                     alt={expandedImage.title}
                     className="expanded-image"
@@ -1227,10 +1226,10 @@ const Projects = () => {
                     {/* Check if the project is from UI/UX Design, Graphic Design, or 3D Modeling sections */}
                     {expandedImage.title &&
                     (blueContainerImages.some(
-                      (LazyLoadImage) => LazyLoadImage.title === expandedImage.title
+                      (img) => img.title === expandedImage.title
                     ) || // 3D Modeling
                       pinkContainerImages.some(
-                        (LazyLoadImage) => LazyLoadImage.title === expandedImage.title
+                        (img) => img.title === expandedImage.title
                       ) || // Graphic Design
                       [
                         "Stucor for Desktop",
