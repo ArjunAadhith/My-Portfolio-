@@ -141,7 +141,8 @@ html, body {
 
 @media (max-width: 480px) {
   .animated-text {
-    font-size: 15vw;
+    font-family: poppins, sans-serif;
+    font-size: 16vw;
     font-weight: bolder;
   }
 
