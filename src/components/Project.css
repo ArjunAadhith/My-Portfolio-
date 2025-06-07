@@ -589,24 +589,6 @@
 }
 
 
-/* Add media query for different screen sizes */
-@media (max-width: 1440px) {
-  .projects-container {
-    height: 800px;
-  }
-}
-
-@media (min-width: 1441px) and (max-width: 1920px) {
-  .projects-container {
-    height: 800px; /* Keep the same height for consistency */
-  }
-}
-
-@media (min-width: 1921px) {
-  .projects-container {
-    height: 800px; /* Keep the same height for consistency */
-  }
-}
 
 
 
