@@ -418,192 +418,175 @@ const Projects = () => {
   useEffect(() => {
     // Array of container objects with their respective refs and type (horizontal/vertical)
     const containers = [
-    { ref: blueContainerRef, name: "blueContainer", type: "horizontal" },
-    { ref: pinkContainerRef, name: "pinkContainer", type: "horizontal" },
-    { ref: largeContainerRef, name: "largeContainer", type: "horizontal" },
-    { ref: leftColumnRef, name: "leftColumn", type: "vertical" },
-    { ref: rightColumnRef, name: "rightColumn", type: "horizontal" },
-  ];
-
+      { ref: blueContainerRef, name: "blueContainer", type: "horizontal" },
+      { ref: pinkContainerRef, name: "pinkContainer", type: "horizontal" },
+      { ref: largeContainerRef, name: "largeContainer", type: "horizontal" },
+      { ref: leftColumnRef, name: "leftColumn", type: "vertical" },
+      { ref: rightColumnRef, name: "rightColumn", type: "horizontal" }, // Added right column
+    ];
 
     // Add swipe functionality to all containers
-  containers.forEach((container) => {
-    const element = container.ref.current;
-    if (!element) return;
+    containers.forEach((container) => {
+      const element = container.ref.current;
+      if (!element) return;
 
-    let startX, startY, startTime;
-    let lastTouch = null;
-    let isScrollingHorizontally = false;
-    let isScrollingVertically = false;
-    let hasMoved = false;
+      let startX, startY, startTime;
+      let lastTouch = null;
+      let isScrollingHorizontally = false;
+      let isScrollingVertically = false;
 
       // Touch and mouse events threshold values
-    const MIN_SWIPE_DISTANCE = 30; // Reduced for better mobile sensitivity
-    const MAX_SWIPE_TIME = 500; // Increased for better mobile experience
-    const WHEEL_TIMEOUT = 100;
+      const MIN_SWIPE_DISTANCE = 50; // Minimum distance required for a swipe
+      const MAX_SWIPE_TIME = 300; // Maximum time in ms for a swipe
+      const WHEEL_TIMEOUT = 100; // Timeout for wheel events in ms
 
-    let wheelDebounceTimer = null;
-    let wheelDeltaX = 0;
-    let wheelDeltaY = 0;
+      let wheelDebounceTimer = null;
+      let lastWheelTimestamp = 0;
+      let wheelDeltaX = 0;
+      let wheelDeltaY = 0;
 
-       // Enhanced touch events for mobile
-    const touchStart = (e) => {
-      const touch = e.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-      startTime = new Date().getTime();
-      lastTouch = { x: startX, y: startY };
-      isScrollingHorizontally = false;
-      isScrollingVertically = false;
-      hasMoved = false;
+      // Touch events for mobile
+      const touchStart = (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = new Date().getTime();
+        lastTouch = { x: startX, y: startY };
+        isScrollingHorizontally = false;
+        isScrollingVertically = false;
 
         // Pause auto-scroll when user starts interaction
-      pauseAutoScroll();
-            e.preventDefault();
+        pauseAutoScroll();
       };
 
       const touchMove = (e) => {
-      if (!lastTouch) return;
+        if (!lastTouch) return;
 
-      const touch = e.touches[0];
-      const currentX = touch.clientX;
-      const currentY = touch.clientY;
-      const diffX = currentX - startX;
-      const diffY = currentY - startY;
-      const absDiffX = Math.abs(diffX);
-      const absDiffY = Math.abs(diffY);
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const diffX = currentX - lastTouch.x;
+        const diffY = currentY - lastTouch.y;
 
-      hasMoved = true;
-
-       // Determine scroll direction based on larger movement
-      if (!isScrollingHorizontally && !isScrollingVertically) {
-        if (absDiffX > absDiffY && absDiffX > 10) {
-          isScrollingHorizontally = true;
-        } else if (absDiffY > absDiffX && absDiffY > 10) {
-          isScrollingVertically = true;
+        // Determine scroll direction based on larger movement
+        if (!isScrollingHorizontally && !isScrollingVertically) {
+          if (Math.abs(diffX) > Math.abs(diffY)) {
+            isScrollingHorizontally = true;
+          } else {
+            isScrollingVertically = true;
+          }
         }
-      }
 
-        //  For horizontal containers, prevent vertical scrolling
-      if (container.type === "horizontal" && isScrollingHorizontally) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      
-      // For vertical containers, prevent horizontal scrolling
-      if (container.type === "vertical" && isScrollingVertically) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
+        // If scrolling in a different direction than container type, prevent default
+        if (
+          (container.type === "horizontal" && isScrollingVertically) ||
+          (container.type === "vertical" && isScrollingHorizontally)
+        ) {
+          e.preventDefault();
+        }
 
-      lastTouch = { x: currentX, y: currentY };
-    };
+        lastTouch = { x: currentX, y: currentY };
+      };
 
       const touchEnd = (e) => {
-      if (!lastTouch || !startX || !startY || !hasMoved) {
+        if (!lastTouch || !startX || !startY) return;
+
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const diffX = endX - startX;
+        const diffY = endY - startY;
+        const elapsedTime = new Date().getTime() - startTime;
+
+        // Check if it's a valid swipe (quick enough and long enough)
+        if (elapsedTime <= MAX_SWIPE_TIME) {
+          if (
+            container.type === "horizontal" &&
+            Math.abs(diffX) > MIN_SWIPE_DISTANCE
+          ) {
+            navigateImages(container.name, diffX < 0 ? 1 : -1);
+          } else if (
+            container.type === "vertical" &&
+            Math.abs(diffY) > MIN_SWIPE_DISTANCE
+          ) {
+            navigateImages(container.name, diffY < 0 ? 1 : -1);
+          }
+        }
+
         lastTouch = null;
-        return;
-      }
+        isScrollingHorizontally = false;
+        isScrollingVertically = false;
+      };
 
-      const touch = e.changedTouches[0];
-      const endX = touch.clientX;
-      const endY = touch.clientY;
-      const diffX = endX - startX;
-      const diffY = endY - startY;
-      const absDiffX = Math.abs(diffX);
-      const absDiffY = Math.abs(diffY);
-      const elapsedTime = new Date().getTime() - startTime;
+      // Wheel event for laptop trackpad/swipe
+      const handleWheel = (e) => {
+        // Pause auto-scroll when user interacts
+        pauseAutoScroll();
 
-           // Check if it's a valid swipe
-      if (elapsedTime <= MAX_SWIPE_TIME) {
-        if (container.type === "horizontal" && absDiffX > MIN_SWIPE_DISTANCE) {
-          // Prevent any default behavior
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Navigate based on swipe direction
-          navigateImages(container.name, diffX < 0 ? 1 : -1);
-        } else if (container.type === "vertical" && absDiffY > MIN_SWIPE_DISTANCE) {
-          // Prevent any default behavior
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Navigate based on swipe direction
-          navigateImages(container.name, diffY < 0 ? 1 : -1);
-        }
-      }
+        const currentTime = new Date().getTime();
 
-       // Reset touch state
-      lastTouch = null;
-      isScrollingHorizontally = false;
-      isScrollingVertically = false;
-      hasMoved = false;
-    };
+        // Accumulate wheel deltas
+        wheelDeltaX += e.deltaX;
+        wheelDeltaY += e.deltaY;
 
+        // Reset timer
+        clearTimeout(wheelDebounceTimer);
 
-    // Enhanced wheel event for desktop
-    const handleWheel = (e) => {
-      pauseAutoScroll();
+        // Process wheel event after WHEEL_TIMEOUT of inactivity
+        wheelDebounceTimer = setTimeout(() => {
+          // Handle horizontal containers
+          if (container.type === "horizontal") {
+            // Check if horizontal movement is dominant or there's significant movement
+            const isHorizontalDominant =
+              Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY);
+            const isSignificantMovement =
+              Math.abs(wheelDeltaX) > MIN_SWIPE_DISTANCE;
 
-      wheelDeltaX += e.deltaX;
-      wheelDeltaY += e.deltaY;
-
-      clearTimeout(wheelDebounceTimer);
-
-      wheelDebounceTimer = setTimeout(() => {
-        if (container.type === "horizontal") {
-          const isHorizontalDominant = Math.abs(wheelDeltaX) > Math.abs(wheelDeltaY);
-          const isSignificantMovement = Math.abs(wheelDeltaX) > MIN_SWIPE_DISTANCE;
-
-          if (isSignificantMovement && (isHorizontalDominant || Math.abs(wheelDeltaY) < 50)) {
-            navigateImages(container.name, wheelDeltaX > 0 ? 1 : -1);
-            e.preventDefault();
+            if (isSignificantMovement) {
+              if (isHorizontalDominant || Math.abs(wheelDeltaY) < 50) {
+                navigateImages(container.name, wheelDeltaX > 0 ? 1 : -1);
+                e.preventDefault();
+              }
+            }
           }
-        } else if (container.type === "vertical") {
-          const isVerticalDominant = Math.abs(wheelDeltaY) > Math.abs(wheelDeltaX);
-          const isSignificantMovement = Math.abs(wheelDeltaY) > MIN_SWIPE_DISTANCE;
+          // Handle vertical containers
+          else if (container.type === "vertical") {
+            // Check if vertical movement is dominant or there's significant movement
+            const isVerticalDominant =
+              Math.abs(wheelDeltaY) > Math.abs(wheelDeltaX);
+            const isSignificantMovement =
+              Math.abs(wheelDeltaY) > MIN_SWIPE_DISTANCE;
 
-          if (isSignificantMovement && isVerticalDominant) {
-            navigateImages(container.name, wheelDeltaY > 0 ? 1 : -1);
-            e.preventDefault();
+            if (isSignificantMovement && isVerticalDominant) {
+              navigateImages(container.name, wheelDeltaY > 0 ? 1 : -1);
+            }
           }
-        }
 
-        wheelDeltaX = 0;
-        wheelDeltaY = 0;
-      }, WHEEL_TIMEOUT);
-    };
+          // Reset accumulators
+          wheelDeltaX = 0;
+          wheelDeltaY = 0;
+        }, WHEEL_TIMEOUT);
 
-     // Add event listeners with proper options
-    element.addEventListener("touchstart", touchStart, { 
-      passive: false, 
-      capture: true 
-    });
-    element.addEventListener("touchmove", touchMove, { 
-      passive: false, 
-      capture: true 
-    });
-    element.addEventListener("touchend", touchEnd, { 
-      passive: false, 
-      capture: true 
-    });
-    element.addEventListener("wheel", handleWheel, { 
-      passive: false 
-    });
-    element.addEventListener("mouseenter", pauseAutoScroll);
+        lastWheelTimestamp = currentTime;
+      };
 
+      // Add event listeners
+      element.addEventListener("touchstart", touchStart, { passive: true });
+      element.addEventListener("touchmove", touchMove, { passive: false });
+      element.addEventListener("touchend", touchEnd);
+      element.addEventListener("wheel", handleWheel, { passive: false });
+
+      // Add mouse events for desktop interaction (hover to pause)
+      element.addEventListener("mouseenter", pauseAutoScroll);
+
+      // Clean up event listeners
       return () => {
-      if (element) {
         element.removeEventListener("touchstart", touchStart);
         element.removeEventListener("touchmove", touchMove);
         element.removeEventListener("touchend", touchEnd);
         element.removeEventListener("wheel", handleWheel);
         element.removeEventListener("mouseenter", pauseAutoScroll);
-      }
-      clearTimeout(wheelDebounceTimer);
-    };
-  });
-}, [activeImageIndexes, isAutoScrolling]); // Re-add listeners when active indexes or auto-scroll state changes
+        clearTimeout(wheelDebounceTimer);
+      };
+    });
+  }, [activeImageIndexes, isAutoScrolling]); // Re-add listeners when active indexes or auto-scroll state changes
 
   // Function to handle navigation in multiple image containers
   const navigateImages = (container, direction) => {
