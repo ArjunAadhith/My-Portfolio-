@@ -1570,3 +1570,46 @@
     width: 5px;
   }
 }
+
+
+
+/* new code for scroll issue in mobile */
+
+.large-image-container,
+.medium-image-container {
+  touch-action: pan-x; /* Allow only horizontal panning */
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+
+
+.large-image,
+.medium-image {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-x;
+}
+
+.vertical-carousel-wrapper {
+  touch-action: pan-y;
+}
+
+/* Ensure the containers have proper dimensions and positioning */
+.large-image-item,
+.medium-image-item {
+  touch-action: pan-x;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.vertical-image-item {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
