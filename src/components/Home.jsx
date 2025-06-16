@@ -232,7 +232,7 @@ export const Home = () => {
             Hi, This is <span>{displayName}</span>
           </h2>
           <p className="role-text">
-            I'm a <span className="rotating-text">{roles[currentRole]}</span>{" "}
+            I’m a <span className="rotating-text">{roles[currentRole]}</span>{" "}
             with expertise in full-stack development, UI/UX design, and 3D
             modeling. Passionate about creating innovative software solutions, I
             specialize in technologies like Python, Java, ReactJS, and Blender,
