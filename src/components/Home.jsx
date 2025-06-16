@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CircleArrowOutUpRight, Download, X } from "lucide-react";
+import { CircleArrowOutUpRight, Download, X, FileText, User, Briefcase, Eye } from "lucide-react";
 import AnimatedSvgLogo from "./AnimatedSvgLogo";
 
 export const Home = () => {
@@ -9,8 +9,19 @@ export const Home = () => {
   const [displayName, setDisplayName] = useState("");
   const [currentRole, setCurrentRole] = useState(0);
   const [showResume, setShowResume] = useState(false);
+  const [currentResumeIcon, setCurrentResumeIcon] = useState(0);
+  
   const roles = ["UI/UX Designer", "Developer", "Animator", "Programmer"];
   const fullName = "Arjun Aadhith";
+  
+  // Dynamic resume icons
+  const resumeIcons = [
+    CircleArrowOutUpRight,
+    FileText,
+    User,
+    Briefcase,
+    Eye
+  ];
 
   // Decrypt animation effect for name
   useEffect(() => {
@@ -53,6 +64,15 @@ export const Home = () => {
     }, 3000);
 
     return () => clearInterval(roleInterval);
+  }, []);
+
+  // Dynamic resume icon rotation
+  useEffect(() => {
+    const iconInterval = setInterval(() => {
+      setCurrentResumeIcon((prev) => (prev + 1) % resumeIcons.length);
+    }, 2000); // Change icon every 2 seconds
+
+    return () => clearInterval(iconInterval);
   }, []);
 
   useEffect(() => {
@@ -121,6 +141,9 @@ export const Home = () => {
     document.body.removeChild(link);
   };
 
+  // Get current resume icon component
+  const CurrentResumeIcon = resumeIcons[currentResumeIcon];
+
   return (
     <div className="home">
       <nav className={`nav ${showNav ? "show" : "hide"}`}>
@@ -145,8 +168,27 @@ export const Home = () => {
           ))}
         </ul>
 
-        <button type="button" onClick={toggleResume}>
-          <CircleArrowOutUpRight />
+        <button 
+          type="button" 
+          onClick={toggleResume}
+          className="resume-btn-dynamic"
+          style={{
+            transition: 'all 0.3s ease',
+            transform: 'scale(1)',
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'scale(1.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'scale(1)';
+          }}
+        >
+          <CurrentResumeIcon 
+            style={{
+              transition: 'all 0.5s ease',
+              animation: 'pulse 2s infinite'
+            }}
+          />
         </button>
       </nav>
 
@@ -190,7 +232,7 @@ export const Home = () => {
             Hi, This is <span>{displayName}</span>
           </h2>
           <p className="role-text">
-            I’m a <span className="rotating-text">{roles[currentRole]}</span>{" "}
+            I'm a <span className="rotating-text">{roles[currentRole]}</span>{" "}
             with expertise in full-stack development, UI/UX design, and 3D
             modeling. Passionate about creating innovative software solutions, I
             specialize in technologies like Python, Java, ReactJS, and Blender,
@@ -198,6 +240,42 @@ export const Home = () => {
           </p>
         </div>
       </section>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.05);
+          }
+        }
+        
+        .resume-btn-dynamic {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .resume-btn-dynamic::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          transition: width 0.3s ease, height 0.3s ease;
+        }
+        
+        .resume-btn-dynamic:hover::before {
+          width: 100%;
+          height: 100%;
+        }
+      `}</style>
     </div>
   );
 };
