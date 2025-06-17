@@ -130,12 +130,12 @@ export const Home = () => {
   // Function to handle resume download
   const downloadResume = () => {
     // Replace with your actual resume path
-    const resumeUrl = "Arjun Aadhith. BS Resume.pdf";
+    const resumeUrl = "Arjun Aadhith's Resume.pdf";
 
     // Create a temporary anchor element
     const link = document.createElement("a");
     link.href = resumeUrl;
-    link.download = "Arjun Aadhith. BS Resume.pdf";
+    link.download = "Arjun Aadhith's Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -204,7 +204,7 @@ export const Home = () => {
             </div>
             <div className="resume-content">
               <img
-                src="Arjun Aadhith. BS Resume.jpg" 
+                src="Arjun Aadhith's Resume .jpg" 
                 alt="Resume" 
                 className="resume-image" 
               />
