@@ -1400,6 +1400,8 @@
   .line {
     top: 129%;
     left: 33%;
+    width: 140px;
+    height: 5px;
   }
   
   .image, .small-image, .medium-image, .large-image {
