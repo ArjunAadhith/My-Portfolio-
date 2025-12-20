@@ -204,7 +204,7 @@ export const Home = () => {
             </div>
             <div className="resume-content">
               <img
-                src="Arjun Aadhith's Resume .jpg" 
+                src="Arjun Aadhith's Resume.jpg" 
                 alt="Resume" 
                 className="resume-image" 
               />
